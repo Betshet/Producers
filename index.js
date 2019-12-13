@@ -42,7 +42,7 @@ app.get( '/', function (req,res) {
 });
 
 //Get the clients from database
-app.get( '/getClients', function (req,res) {
+app.get( '/getTable', function (req,res) {
 	
 	var con = mysql.createConnection({
         host: "localhost",
@@ -57,15 +57,15 @@ app.get( '/getClients', function (req,res) {
         console.log("Connected!");
     })
 	
-	var sql = "SELECT * FROM consumer";
+	var sql = "SELECT * FROM "+req.query.p1;
 	con.query(sql, function (err, result) {
         if (err) throw err;
 		res.setHeader('Content-Type', 'application/json');
 
         res.end(JSON.stringify({
             status: 'OK',
-            message: 'Consumers getted',
-            clients: JSON.stringify(result)
+            message: 'Data getted',
+            table: JSON.stringify(result)
         }));
         
 	});
@@ -74,3 +74,5 @@ app.get( '/getClients', function (req,res) {
 	
 	return res;
 });
+
+//Add a client to the database

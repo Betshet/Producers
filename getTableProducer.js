@@ -5,16 +5,17 @@ $(document).ready( function () {
 	
 	$.ajax({
 		type: 'GET',
-		url: 'http://localhost:3000/getTable?p1=consumer',
+		url: 'http://localhost:3000/getTable?p1=producer',
 
 		success: function (res) {
 			var dataSet = []
-			var clients = JSON.parse(res.table);
-			dataSet.push(Object.values(clients[0]));
+			console.log(res.table);
+			var producers = JSON.parse(res.table);
+			dataSet.push(Object.values(producers[0]));
 			console.log(dataSet);
 			
 
-			$('#tableClients').DataTable({
+			$('#tableProducers').DataTable({
 				colReorder: true,
 				rowReorder: true,
 				select: true,
