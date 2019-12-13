@@ -40,3 +40,37 @@ app.get( '/', function (req,res) {
 	console.log('hi');
 	return res;
 });
+
+//Get the clients from database
+app.get( '/getClients', function (req,res) {
+	
+	var con = mysql.createConnection({
+        host: "localhost",
+		port: "3306",
+        user: "root",
+        password: "",
+        database: "database"
+    });
+	
+	con.connect(function(err) {
+        if (err) throw err;
+        console.log("Connected!");
+    })
+	
+	var sql = "SELECT * FROM consumer";
+	con.query(sql, function (err, result) {
+        if (err) throw err;
+		res.setHeader('Content-Type', 'application/json');
+
+        res.end(JSON.stringify({
+            status: 'OK',
+            message: 'Consumers getted',
+            clients: JSON.stringify(result)
+        }));
+        
+	});
+	
+	con.end();
+	
+	return res;
+});
