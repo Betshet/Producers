@@ -1,0 +1,128 @@
+ 
+ 
+ h1 {
+	text-decoration: underline;
+	text-align: center;
+	font-family: tahoma;
+ }
+ 
+ .button {
+  background-color: #555555; /* Black */
+  color: white;
+  padding: 15px 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border: 2px solid #555555;
+  width: 300px;
+  margin-top: 8px;
+  margin-left:20px;
+}
+
+.buttonRight{
+  background-color: #555555; /* Black */
+  color: white;
+  padding: 15px 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border: 2px solid #555555;
+  width: 300px;
+  float: right;
+  margin-top: 8px;
+  margin-right:20px;
+}
+
+.buttonSmol{
+  background-color: #FFFFFF; /* Black */
+  color: black;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  border: none;
+  width: 100px;
+  margin-top: 8px;
+  margin-left:20px;
+}
+
+.buttonMed{
+  background-color: #555555; /* Black */
+  color: white;
+  padding: 15px 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border: 2px solid #555555;
+  width: 150;
+  margin-top: 8px;
+  margin-left:20px;
+}
+
+.button:hover, .buttonRight:hover, .buttonMed:hover{
+  background-color: white;
+  color: #555555;
+  border: 2px solid #555555;
+}
+
+.button:active, .buttonRight:active, .buttonSmol:active, .buttonMed:active {
+  background-color: #e7e7e7;
+  box-shadow: 0 1px #666;
+  transform: translateY(1px);
+}
+
+.searchbar input{
+  padding: 6px;
+  margin-top: 8px;
+  margin-left: 16px;
+  background: #ddd;
+  font-size: 17px;
+  
+}
+
+.searchbar button {
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  border:none;
+  background: #fff;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.searchbar button:hover {
+  background: #ccc;
+}
+
+select {
+	  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  margin-left: 16px;
+  border:none;
+  background: #ddd;
+  font-size: 14px;
+}
+
+
+label { 
+	width: 120px ;
+	display:inline-block;
+}
+
+.labelShort {
+	width: 10 ;
+	display:inline-block;
+}
+
+textarea {
+  padding: 6px;
+  margin-top: 8px;
+  margin-left: 16px;
+  background: #ddd;
+  font-size: 17px;
+}
