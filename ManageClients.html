@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>ManageClients</title>
+    <meta content="">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script type="text/javascript" src="jquery.js"></script>
+	<link rel="stylesheet" type="text/css" href="DataTables/datatables.css">
+	<script type="text/javascript" charset="utf8" src="DataTables/datatables.js"></script>
+	<script type="text/javascript" src="cookies.js"></script>
+	<script type="text/javascript" src="getTableClient.js"></script>   
+	<link rel="stylesheet" href="Homepage.css">
+  </head>
+  
+  
+  
+  
+  
+  <body>
+    <button class="buttonSmol" onclick="Javascript:returnHome()"><i class='fa fa-long-arrow-left'></i>  Back</button>
+	
+	<br>
+	<table id="tableClients">
+	</table>
+	<input type="button" class="buttonMed" value="Add" onclick="window.location.href='AddClientForm.html'"> 
+
+	<input type="button" class="buttonMed" value="Remove" onclick="Javascript:delRow()"> 
+	
+
+  </body>
+ </html>
