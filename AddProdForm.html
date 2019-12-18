@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>Add Producer Form</title>
+    <meta content="">
+	<link rel="stylesheet" href="Homepage.css">	
+  </head>
+  <body>
+	<form method="post" action="http://localhost:3000/addProducer/">
+		<div class="searchbar">
+			<label for="firstname">Firstname :</label>
+			<input type="text" name="firstname" id="firstname"> 
+			<br>
+			<label for="surname">Surname :</label>
+			<input type="text" name="surname" id="surname"> 
+			<br>
+			<label for="email">Email :</label>
+			<input type="text" name="email" id="email"> 
+			<br>
+			<label for="phone">Phone number :</label>
+			<input type="text" name="phone" id="phone"> 
+			<br>
+			<label for="address">Address :</label>
+			<input type="text" name="address" id="address"> 
+			<br>
+			<label for="comments">Comments :</label>
+			<textarea name="comments" id="comments"></textarea>
+			<br><br><br>
+			<input type="submit" value="Confirm"> 
+			<input type="button" value="Cancel" onclick="window.location.href='ManageProducers.html'"> 
+		</div>
+	</form>
+  </body>
+ </html>
