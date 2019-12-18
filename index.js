@@ -140,7 +140,7 @@ app.post('/addClient/', function(req, res) {
   })
 
   // Insertion dans la base consumer
-  var sql = "INSERT INTO consumer (surname, firstname, email, phone, producer) VALUES (?)";
+  var sql = "INSERT INTO consumer (surname, firstname, email, phone, idProducer) VALUES (?)";
   var values = [surname, firstname, email, phone, producer];
   con.query(sql, [values], function (err, result) {
     if (err) throw err;
@@ -170,7 +170,7 @@ app.post('/addClient/', function(req, res) {
     });
   });
   
-  return res.redirect('http://localhost:8080/ManageClients.html');
+  return res.redirect('http://localhost:8080/edsa-Producers/ManageClients.html');
   
 });
 
@@ -232,7 +232,7 @@ app.post('/addProducer/', function(req, res) {
     });
   });
   
-  return res.redirect('http://localhost:8080/ManageProducers.html');
+  return res.redirect('http://localhost:8080/edsa-Producers/ManageProducers.html');
   
 });
 
