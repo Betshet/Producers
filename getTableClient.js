@@ -2,15 +2,24 @@
 
 
 $(document).ready( function () {
+	var user = getCookie('name');
+	console.log(user);
+	if(user.localeCompare('admin')==0){
+		var urlString = 'http://localhost:3000/getTable?p1=consumer';
+	}
+	else{ var urlString = 'http://localhost:3000/getRows?p1=consumer&p2=idProducer&p3='+user; }
+	
 	
 	$.ajax({
 		type: 'GET',
-		url: 'http://localhost:3000/getTable?p1=consumer',
+		url: urlString,
 
 		success: function (res) {
 			var dataSet = []
-			var clients = JSON.parse(res.table);
-			dataSet.push(Object.values(clients[0]));
+			var clients = JSON.parse(res.rows);
+			for(i in clients){
+				dataSet.push(Object.values(clients[i]));
+			}
 			console.log(dataSet);
 			
 
@@ -24,7 +33,8 @@ $(document).ready( function () {
 					{title:"Name"},
 					{title:"Surname"},
 					{title:"Email"},
-					{title:"Phone"}
+					{title:"Phone"},
+					{title:"Producer"}
 				]	
 			});	
 			

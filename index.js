@@ -41,7 +41,7 @@ app.get( '/', function (req,res) {
 	return res;
 });
 
-//Get the clients from database
+//Get the requested table from database
 app.get( '/getTable', function (req,res) {
 	
 	var con = mysql.createConnection({
@@ -65,7 +65,7 @@ app.get( '/getTable', function (req,res) {
         res.end(JSON.stringify({
             status: 'OK',
             message: 'Data getted',
-            table: JSON.stringify(result)
+            rows: JSON.stringify(result)
         }));
         
 	});
@@ -75,4 +75,36 @@ app.get( '/getTable', function (req,res) {
 	return res;
 });
 
-//Add a client to the database
+//Get the requested rows from the requested table with the given value
+app.get( '/getRows', function (req,res) {
+	
+	var con = mysql.createConnection({
+        host: "localhost",
+		port: "3306",
+        user: "root",
+        password: "",
+        database: "database"
+    });
+	
+	con.connect(function(err) {
+        if (err) throw err;
+        console.log("Connected!");
+    })
+	
+	var sql = "SELECT * FROM "+req.query.p1+" WHERE "+req.query.p2+" = \'"+req.query.p3+"\'";
+	con.query(sql, function (err, result) {
+        if (err) throw err;
+		res.setHeader('Content-Type', 'application/json');
+
+        res.end(JSON.stringify({
+            status: 'OK',
+            message: 'Data getted',
+            rows: JSON.stringify(result)
+        }));
+        
+	});
+	
+	con.end();
+	
+	return res;
+});

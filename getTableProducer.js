@@ -9,9 +9,11 @@ $(document).ready( function () {
 
 		success: function (res) {
 			var dataSet = []
-			console.log(res.table);
-			var producers = JSON.parse(res.table);
-			dataSet.push(Object.values(producers[0]));
+			var producers = JSON.parse(res.rows);
+			for (i in producers){
+				dataSet.push(Object.values(producers[i]));
+			}
+			
 			console.log(dataSet);
 			
 
