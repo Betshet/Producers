@@ -1,14 +1,14 @@
 <html>
   <head>
-    <title>Add Producer Form</title>
+    <title>Add Client Form</title>
     <meta content="">
 	<link rel="stylesheet" href="Homepage.css">
   </head>
   <body>
 	<form method="post" action="http://localhost:3000/addClient/">
 		<div class="searchbar">
-			<label for="name">Name :</label>
-			<input type="text" name="name" id="name"> 
+			<label for="firstname">Firstname :</label>
+			<input type="text" name="firstname" id="firstname"> 
 			<br>
 			<label for="surname">Surname :</label>
 			<input type="text" name="surname" id="surname"> 
@@ -24,6 +24,9 @@
 			<br>
 			<label for="comments">Comments :</label>
 			<textarea name="comments" id="comments"></textarea>
+			<br>
+			<label for="IdProducer">Id of the Producer :</label>
+			<input type="text" name="IdProducer" id="IdProducer">
 			<br><br><br>
 			<input type="submit" value="Confirm"> 
 			<input type="button" value="Cancel" onclick="window.location.href='ManageClients.html'"> 
