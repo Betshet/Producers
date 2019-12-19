@@ -236,3 +236,42 @@ app.post('/addProducer/', function(req, res) {
   
 });
 
+//Add a truck to the database
+app.post('/addTruck/', function(req, res) {
+  
+  res.setHeader('Content-Type', 'application/json');
+  console.log(req.body);
+  
+  // Récupération des éléments du formulaire
+  var capacity = req.body.capacity;
+  var isRefregirated = req.body.isRefregirated;
+  var producer = req.body.IdProducer;
+    
+  // Connexion à la base de données
+  var con = mysql.createConnection({
+    host: "localhost",
+    port: "3306",
+    user: "root",
+    password: "",
+    database: "database"
+  });
+
+  con.connect(function(err) {
+      if (err) throw err;
+      console.log("Connected!");
+  })
+
+  // Insertion dans la table truck
+  var sql = "INSERT INTO vehicles (capacity, isRefregirated, idProducer) VALUES (?)";
+  var values = [capacity, isRefregirated, producer];
+  con.query(sql, [values], function (err, result) {
+    if (err) throw err;
+    console.log("1 record inserted");
+     
+    //fermeture de la connexion
+    con.end();
+  });
+    
+  return res.redirect('http://localhost:8080/edsa-Producers/ManageClients.html');
+  
+});
