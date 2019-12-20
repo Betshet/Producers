@@ -272,6 +272,6 @@ app.post('/addTruck/', function(req, res) {
     con.end();
   });
     
-  return res.redirect('http://localhost:8080/edsa-Producers/ManageClients.html');
+  return res.redirect('http://localhost:8080/edsa-Producers/TruckList.html');
   
 });

@@ -1,7 +1,6 @@
 TODO
 
-remove dans ManageProd/Clients
-back dans les form
-add client
-trucks
+remove dans ManageProd/Clients/Trucks
+cookies qui restent pas après requete node
+trucks ~
 delivery
