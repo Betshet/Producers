@@ -345,3 +345,31 @@ app.post('/addDelivery/', function(req, res) {
   return res.redirect('http://localhost:8080/edsa-Producers/ManageDelivery.html');
   
 });
+
+app.get( '/deleteRow', function (req,res) {
+    res.setHeader('Content-Type', 'application/json');
+  console.log(req.body);
+    
+  var table = req.query.p1;
+  var column = req.query.p2;
+  var cell = req.query.p3;
+
+  // Connexion à la base de données
+  var con = mysql.createConnection({
+    host: "localhost",
+    port: "3306",
+    user: "root",
+    password: "",
+    database: "database"
+  });
+
+  con.connect(function(err) {
+      if (err) throw err;
+      console.log("Connected!");
+  })
+
+  var sql = "DELETE FROM "+table+" WHERE "+column+" = "+cell;
+  con.query(sql, function (err, result) {
+        if (err) throw err;
+  });
+});
