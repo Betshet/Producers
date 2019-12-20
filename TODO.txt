@@ -1,6 +1,6 @@
 TODO
 
-remove dans ManageProd/Clients/Trucks
+remove dans ManageProd/Clients/Trucks/Delivery
 cookies qui restent pas après requete node
-trucks ~
-delivery
+Les modifications des éléments à rajouter
+Calcul des distances si on a le temps Inchallah

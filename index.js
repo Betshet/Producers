@@ -282,3 +282,66 @@ app.post('/addTruck/', function(req, res) {
   return res.redirect('http://localhost:8080/edsa-Producers/TruckList.html');
   
 });
+
+function jsDateToSql(sYear, sMonth, sDay, sHour, sMinute){
+    //Change the parameters to SQL DATETIME format ("yyyy-mm-dd hh:mm:ss.ms")
+    var sqlDate = sYear + "-" + sMonth + "-" + sDay + " " + sHour + ":" + sMinute + ":00.00";
+
+    return sqlDate;
+}
+
+//Add a delivery to the database
+app.post('/addDelivery/', function(req, res) {
+  
+  res.setHeader('Content-Type', 'application/json');
+  console.log(req.body);
+  
+  // Récupération des éléments du formulaire
+  var quantity = req.body.quantity;
+  var input = req.body.checkYes;
+  var productsType;
+  if(input == 'true'){
+    productsType = 1;
+  }
+  else{
+    productsType = 0;
+  }
+  var sYear = req.body.year;
+  var sMonth = req.body.month;
+  var sDay = req.body.day;
+  var sHour = req.body.hour;
+  var sMinute = req.body.minute;
+  var consumer = req.body.consumer;
+  var producer = req.body.producer;
+
+  //Modification en DateTime pour la base de données
+  var sqlDate = jsDateToSql(sYear, sMonth, sDay, sHour, sMinute);
+
+  // Connexion à la base de données
+  var con = mysql.createConnection({
+    host: "localhost",
+    port: "3306",
+    user: "root",
+    password: "",
+    database: "database"
+  });
+
+  con.connect(function(err) {
+      if (err) throw err;
+      console.log("Connected!");
+  })
+
+  // Insertion dans la table delivery
+  var sql = "INSERT INTO delivery (quantity, productsType, deliveryHour, idProducer, idConsumer) VALUES (?)";
+  var values = [quantity, productsType, sqlDate, producer, consumer];
+  con.query(sql, [values], function (err, result) {
+    if (err) throw err;
+    console.log("1 record inserted");
+     
+    //fermeture de la connexion
+    con.end();
+  });
+    
+  return res.redirect('http://localhost:8080/edsa-Producers/ManageDelivery.html');
+  
+});
