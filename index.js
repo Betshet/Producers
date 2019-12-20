@@ -244,7 +244,14 @@ app.post('/addTruck/', function(req, res) {
   
   // Récupération des éléments du formulaire
   var capacity = req.body.capacity;
-  var isRefregirated = req.body.isRefregirated;
+  var input = req.body.checkYes;
+  var isRefregirated;
+  if(input == 'true'){
+    isRefregirated = 1;
+  }
+  else{
+    isRefregirated = 0;
+  }
   var producer = req.body.IdProducer;
     
   // Connexion à la base de données

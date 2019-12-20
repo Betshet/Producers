@@ -3,6 +3,13 @@
     <title>Add Truck Form</title>
     <meta content="">
 	<link rel="stylesheet" href="Homepage.css">
+	<script type="text/javascript" src="jquery.js"></script>
+	<script  type="text/javascript" src="authentification.js"></script>
+	<script>
+		$(document).ready( function () {
+			document.getElementById('producer').value = getCookie('name');
+		});
+	</script>
   </head>
   <body>
 	<form method="post" action="http://localhost:3000/addTruck/">
@@ -10,11 +17,9 @@
 			<label for="capacity">Capacity :</label>
 			<input type="text" name="capacity" id="capacity"> 
 			<br>
-			<label for="isRefregirated">Refrigirated (True or False) :</label>
-			<input type="text" name="isRefregirated" id="isRefregirated"> 
-			<br>
-			<label for="IdProducer">Id of the Producer :</label>
-			<input type="text" name="IdProducer" id="IdProducer">
+			<label for="checkbox">Refrigirated :</label>
+			<label class="labelShort">Yes</label><input type="radio" name="checkbox" id="checkYes" value="true">
+			<input type="hidden" name="IdProducer" id="IdProducer" value="" />
 			<br><br><br>
 			<input type="submit" value="Confirm"> 
 			<input type="button" value="Cancel" onclick="window.location.href='TruckList.html'"> 
