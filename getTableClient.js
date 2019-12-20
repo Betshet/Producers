@@ -46,3 +46,31 @@ $(document).ready( function () {
 
 });
 
+function delRow(){
+	var table = $('#tableClients').DataTable();	
+
+	var idClient = table
+	.rows( '.selected' )
+	.data()[0][0];
+	
+	$.ajax({
+		type: 'POST',
+		url: 'http://localhost:3000/deleteRow?p1=consumer&p2=idConsumer&p3='+idClient,
+
+		error: function (request, status, error) {
+			alert(error);
+		}		
+	});
+	
+	$.ajax({
+		type: 'POST',
+		url: 'http://localhost:3000/deleteRow?p1=consumeraddress&p2=idConsumer&p3='+idClient,
+
+		error: function (request, status, error) {
+			alert(error);
+		}		
+	});
+	
+	
+	
+}
