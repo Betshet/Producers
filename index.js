@@ -123,7 +123,7 @@ app.post('/addClient/', function(req, res) {
   var phone = req.body.phone;
   var address = req.body.address;
   var comments = req.body.comments;
-  var producer = req.body.IdProducer;
+  var producer = req.body.producer;
     
   // Connexion à la base de données
   var con = mysql.createConnection({
@@ -147,7 +147,7 @@ app.post('/addClient/', function(req, res) {
     console.log("1 record inserted");
   
     // Récupération de l'id du nouveau consumer
-    var sql2 = "SELECT idConsumer FROM consumer WHERE surname = ? and firstname = ? and email = ? and phone = ? and producer = ?";
+    var sql2 = "SELECT idConsumer FROM consumer WHERE surname = ? and firstname = ? and email = ? and phone = ? and idProducer = ?";
     var values2 = [surname];
     var values3 = [firstname];
     var values4 = [email];
