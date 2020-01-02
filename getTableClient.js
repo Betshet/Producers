@@ -47,6 +47,7 @@ $(document).ready( function () {
 });
 
 function delRow(){
+	window.location.reload();
 	var table = $('#tableClients').DataTable();	
 
 	var idClient = table
@@ -56,7 +57,8 @@ function delRow(){
 	$.ajax({
 		type: 'POST',
 		url: 'http://localhost:3000/deleteRow?p1=consumer&p2=idConsumer&p3='+idClient,
-
+		
+		success: function () {},
 		error: function (request, status, error) {
 			alert(error);
 		}		
@@ -65,12 +67,12 @@ function delRow(){
 	$.ajax({
 		type: 'POST',
 		url: 'http://localhost:3000/deleteRow?p1=consumeraddress&p2=idConsumer&p3='+idClient,
-
+		
+		success: function () {},
 		error: function (request, status, error) {
 			alert(error);
 		}		
 	});
-	
 	
 	
 }

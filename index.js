@@ -183,7 +183,7 @@ app.post('/addProducer/', function(req, res) {
   // Récupération des éléments du formulaire
   var firstname = req.body.firstname;
   var surname = req.body.surname;
-  var email = req.body.email;
+	var email = req.body.email;
   var phone = req.body.phone;
   var address = req.body.address;
   var comments = req.body.comments;
@@ -290,7 +290,7 @@ function jsDateToSql(sYear, sMonth, sDay, sHour, sMinute){
     return sqlDate;
 }
 
-//Add a delivery to the database
+//Add a de livery to the database
 app.post('/addDelivery/', function(req, res) {
   
   res.setHeader('Content-Type', 'application/json');
@@ -346,13 +346,9 @@ app.post('/addDelivery/', function(req, res) {
   
 });
 
-app.get( '/deleteRow', function (req,res) {
+app.post( '/deleteRow/', function (req,res) {
     res.setHeader('Content-Type', 'application/json');
-  console.log(req.body);
-    
-  var table = req.query.p1;
-  var column = req.query.p2;
-  var cell = req.query.p3;
+
 
   // Connexion à la base de données
   var con = mysql.createConnection({
@@ -367,9 +363,14 @@ app.get( '/deleteRow', function (req,res) {
       if (err) throw err;
       console.log("Connected!");
   })
-
+ 
+  var table = req.query.p1;
+  var column = req.query.p2;
+  var cell = req.query.p3;
+	
   var sql = "DELETE FROM "+table+" WHERE "+column+" = "+cell;
   con.query(sql, function (err, result) {
         if (err) throw err;
   });
+  
 });

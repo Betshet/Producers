@@ -39,3 +39,32 @@ $(document).ready( function () {
 
 });
 
+function delRow(){
+	window.location.reload();
+	var table = $('#tableProducers').DataTable();	
+
+	var idProd = table
+	.rows( '.selected' )
+	.data()[0][0];
+	
+	$.ajax({
+		type: 'POST',
+		url: 'http://localhost:3000/deleteRow?p1=producer&p2=idProducer&p3='+idProd,
+		
+		success: function () { },
+		error: function (request, status, error) {
+			alert(error);
+		}		
+	});
+	
+	$.ajax({
+		type: 'POST',
+		url: 'http://localhost:3000/deleteRow?p1=produceraddress&p2=idProducer&p3='+idProd,
+		
+		success: function () { },
+		error: function (request, status, error) {
+			alert(error);
+		}		
+	});
+	
+}

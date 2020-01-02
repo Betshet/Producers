@@ -44,3 +44,22 @@ $(document).ready( function () {
 
 });
 
+function delRow(){
+	window.location.reload();
+	var table = $('#tableTruck').DataTable();	
+
+	var idTruck = table
+	.rows( '.selected' )
+	.data()[0][0];
+	
+	$.ajax({
+		type: 'POST',
+		url: 'http://localhost:3000/deleteRow?p1=vehicles&p2=idTruck&p3='+idTruck,
+		
+		success: function () { },
+		error: function (request, status, error) {
+			alert(error);
+		}		
+	});
+	
+}

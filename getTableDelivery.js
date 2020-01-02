@@ -46,3 +46,22 @@ $(document).ready( function () {
 
 });
 
+function delRow(){
+	window.location.reload();
+	var table = $('#tableDelivery').DataTable();	
+
+	var idDelivery = table
+	.rows( '.selected' )
+	.data()[0][0];
+	
+	$.ajax({
+		type: 'POST',
+		url: 'http://localhost:3000/deleteRow?p1=delivery&p2=idDelivery&p3='+idDelivery,
+		
+		success: function () { },
+		error: function (request, status, error) {
+			alert(error);
+		}		
+	});
+	
+}
