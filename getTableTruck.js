@@ -63,3 +63,15 @@ function delRow(){
 	});
 	
 }
+
+function editRow(){
+	var table = $('#tableTruck').DataTable();	
+
+	var idTruck = table
+	.rows( '.selected' )
+	.data()[0][0];
+	
+	document.cookie = "truck="+idTruck;
+	
+	window.location.href='EditTruckForm.html'; 
+}

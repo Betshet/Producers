@@ -4,6 +4,13 @@
     <meta content="">
 
 	<link rel="stylesheet" href="Homepage.css">	
+	<script type="text/javascript" src="jquery.js"></script>
+	<script  type="text/javascript" src="authentification.js"></script>
+	<script>
+		$(document).ready( function () {
+			document.getElementById('producer').value = getCookie(producer);			
+		});
+	</script>
   </head>
   <body>
 	<form method="post" action="http://localhost:3000/editProducer/">
@@ -26,6 +33,8 @@
 			<br>
 			<label for="comments">Comments :</label>
 			<textarea name="comments" id="comments"></textarea>
+			
+			<input type="hidden" name="producer" id="producer" value="" />
 			<br><br><br>
 			<input type="submit" value="Confirm"> 
 			<input type="button" value="Cancel" onclick="window.location.href='ManageProducers.html'"> 

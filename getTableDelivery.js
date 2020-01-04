@@ -65,3 +65,15 @@ function delRow(){
 	});
 	
 }
+
+function editRow(){
+	var table = $('#tableDelivery').DataTable();	
+
+	var idDelivery = table
+	.rows( '.selected' )
+	.data()[0][0];
+	
+	document.cookie = "delivery="+idDelivery;
+	
+	window.location.href='EditDeliveryForm.html'; 
+}

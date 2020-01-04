@@ -74,3 +74,15 @@ function delRow(){
 		}		
 	});
 }
+
+function editRow(){
+	var table = $('#tableClients').DataTable();	
+
+	var idClient = table
+	.rows( '.selected' )
+	.data()[0][0];
+	
+	document.cookie = "client="+idClient;
+	
+	window.location.href='EditClientForm.html'; 
+}

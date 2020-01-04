@@ -7,7 +7,7 @@
 	<script  type="text/javascript" src="authentification.js"></script>
 	<script>
 		$(document).ready( function () {
-			document.getElementById('producer').value = getCookie('name');
+			document.getElementById('delivery').value = getCookie('delivery');
 		});
 	</script>
   </head>
@@ -39,7 +39,7 @@
 			<br>
 			<label for="consumer">Consumer :</label>
 			<textarea name="consumer" id="consumer"></textarea>
-			<input type="hidden" name="producer" id="producer" value="" />
+			<input type="hidden" name="delivery" id="delivery" value="" />
 			<br><br><br>
 			<input type="submit" value="Confirm"> 
 			<input type="button" value="Cancel" onclick="window.location.href='ManageDelivery.html'"> 

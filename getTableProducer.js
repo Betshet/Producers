@@ -68,3 +68,15 @@ function delRow(){
 	});
 	
 }
+
+function editRow(){
+	var table = $('#tableProducers').DataTable();	
+
+	var idProducer = table
+	.rows( '.selected' )
+	.data()[0][0];
+	
+	document.cookie = "producer="+idProducer;
+	
+	window.location.href='EditProducerForm.html'; 
+}

@@ -7,7 +7,7 @@
 	<script  type="text/javascript" src="authentification.js"></script>
 	<script>
 		$(document).ready( function () {
-			document.getElementById('producer').value = getCookie('name');
+			document.getElementById('truck').value = getCookie('truck');
 		});
 	</script>
   </head>
@@ -19,7 +19,7 @@
 			<br>
 			<label for="checkbox">Refrigirated :</label>
 			<label class="labelShort">Yes</label><input type="radio" name="checkbox" id="checkYes" value="true">
-			<input type="hidden" name="IdProducer" id="IdProducer" value="" />
+			<input type="hidden" name="truck" id="truck" value="" />
 			<br><br><br>
 			<input type="submit" value="Confirm"> 
 			<input type="button" value="Cancel" onclick="window.location.href='TruckList.html'"> 
