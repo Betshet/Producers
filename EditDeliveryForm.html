@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Add Delivery Form</title>
+    <title>Edit Delivery Form</title>
     <meta content="">
 	<link rel="stylesheet" href="Homepage.css">
 	<script type="text/javascript" src="jquery.js"></script>
@@ -14,7 +14,7 @@
   
 	
   <body>
-	<form method="post" action="http://localhost:3000/addDelivery">
+	<form method="post" action="http://localhost:3000/editDelivery">
 		<div class="searchbar">
 			<label for="quantity">Quantity :</label>
 			<input type="text" name="quantity" id="quantity"> 
@@ -42,7 +42,6 @@
 			<input type="hidden" name="producer" id="producer" value="" />
 			<br><br><br>
 			<input type="submit" value="Confirm"> 
-			
 			<input type="button" value="Cancel" onclick="window.location.href='ManageDelivery.html'"> 
 		</div>
 	</form>

@@ -73,6 +73,4 @@ function delRow(){
 			alert(error);
 		}		
 	});
-	
-	
 }
