@@ -1,4 +1,4 @@
 TODO
-
-Les modifications des éléments à rajouter
+Ajouter l'affichage du planning (même si ça ne sera pas fonctionnel car on aura pas de ligne, (getTable, index ...))
 Calcul des distances si on a le temps Inchallah
+Modifier la BDD et donc tous les codes (je vais m'en occuper tkt)
