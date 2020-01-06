@@ -290,7 +290,7 @@ function jsDateToSql(sYear, sMonth, sDay, sHour, sMinute){
     return sqlDate;
 }
 
-//Add a de livery to the database
+//Add a delivery to the database
 app.post('/addDelivery/', function(req, res) {
   
   res.setHeader('Content-Type', 'application/json');
@@ -372,5 +372,232 @@ app.post( '/deleteRow/', function (req,res) {
   con.query(sql, function (err, result) {
         if (err) throw err;
   });
+  
+});
+
+//Edit the information of a client in the database
+app.post('/editClient/', function(req, res) {
+  
+  res.setHeader('Content-Type', 'application/json');
+  console.log(req.body);
+  
+  // Récupération des éléments du formulaire
+  var firstname = req.body.firstname;
+  var surname = req.body.surname;
+  var email = req.body.email;
+  var phone = req.body.phone;
+  var address = req.body.address;
+  var comments = req.body.comments;
+  var client = req.body.client;
+    
+  // Connexion à la base de données
+  var con = mysql.createConnection({
+    host: "localhost",
+    port: "3306",
+    user: "root",
+    password: "",
+    database: "database"
+  });
+
+  con.connect(function(err) {
+      if (err) throw err;
+      console.log("Connected!");
+  })
+
+  // Modification de la table consumer
+  var sql = "UPDATE consumer SET firstname = ? , surname = ? , email = ? , phone = ? WHERE idConsumer = ?";
+  var values1 = [firstname];
+  var values2 = [surname];
+  var values3 = [email];
+  var values4 = [phone];
+  var values5 = [client];
+  con.query(sql, [values1, values2, values3, values4, values5], function (err, result) {
+    if (err) throw err;
+    console.log("1 record modified");
+  
+    // Modification de l'adresse du client
+    var sql2 = "UPDATE consumerAddress SET address = ? , comments = ? WHERE idConsumer = ?";
+    var values6 = [address];
+    var values7 = [comments];
+    var values8 = [client];
+    con.query(sql2, [values6, values7, values8], function (err2, result2) {
+      console.log(err2);
+
+      console.log("1 record modified");
+      
+      //fermeture de la connexion
+      con.end();
+    });
+  });
+  
+  return res.redirect('http://localhost:8080/edsa-Producers/ManageClients.html');
+  
+});
+
+//Edit the information of a producer in the database
+app.post('/editProducer/', function(req, res) {
+  
+  res.setHeader('Content-Type', 'application/json');
+  console.log(req.body);
+  
+  // Récupération des éléments du formulaire
+  var firstname = req.body.firstname;
+  var surname = req.body.surname;
+  var email = req.body.email;
+  var phone = req.body.phone;
+  var address = req.body.address;
+  var comments = req.body.comments;
+  var producer = req.body.producer;
+    
+  // Connexion à la base de données
+  var con = mysql.createConnection({
+    host: "localhost",
+    port: "3306",
+    user: "root",
+    password: "",
+    database: "database"
+  });
+
+  con.connect(function(err) {
+      if (err) throw err;
+      console.log("Connected!");
+  })
+
+  // Modification de la table producer
+  var sql = "UPDATE producer SET firstname = ? , surname = ? , email = ? , phone = ? WHERE idProducer = ?";
+  var values1 = [firstname];
+  var values2 = [surname];
+  var values3 = [email];
+  var values4 = [phone];
+  var values5 = [producer];
+  con.query(sql, [values1, values2, values3, values4, values5], function (err, result) {
+    if (err) throw err;
+    console.log("1 record modified");
+  
+    // Modification de l'adresse du producteur
+    var sql2 = "UPDATE producerAddress SET address = ? , comments = ? WHERE idProducer = ?";
+    var values6 = [address];
+    var values7 = [comments];
+    var values8 = [producer];
+    con.query(sql2, [values6, values7, values8], function (err2, result2) {
+      console.log(err2);
+
+      console.log("1 record modified");
+      
+      //fermeture de la connexion
+      con.end();
+    });
+  });
+  
+  return res.redirect('http://localhost:8080/edsa-Producers/ManageProducers.html');
+  
+});
+
+//Edit the information of a truck in the database
+app.post('/editTruck/', function(req, res) {
+  
+  res.setHeader('Content-Type', 'application/json');
+  console.log(req.body);
+  
+  // Récupération des éléments du formulaire
+  var capacity = req.body.capacity;
+  var input = req.body.checkYes;
+  var isRefregirated;
+  if(input == 'true'){
+    isRefregirated = 1;
+  }
+  else{
+    isRefregirated = 0;
+  }
+  var truck = req.body.truck;
+    
+  // Connexion à la base de données
+  var con = mysql.createConnection({
+    host: "localhost",
+    port: "3306",
+    user: "root",
+    password: "",
+    database: "database"
+  });
+
+  con.connect(function(err) {
+      if (err) throw err;
+      console.log("Connected!");
+  })
+
+  // Modification de la table truck
+  var sql = "UPDATE vehicles SET capacity = ? , isRefregirated = ? WHERE idVehicles = ?";
+  var values1 = [capacity];
+  var values2 = [isRefregirated];
+  var values3 = [truck];
+  con.query(sql, [values1, values2, values3], function (err2, result2) {
+    if (err) throw err;
+    console.log("1 record Modified");
+     
+    //fermeture de la connexion
+    con.end();
+  });
+    
+  return res.redirect('http://localhost:8080/edsa-Producers/TruckList.html');
+  
+});
+
+//Edit a delivery from the database
+app.post('/editDelivery/', function(req, res) {
+  
+  res.setHeader('Content-Type', 'application/json');
+  console.log(req.body);
+  
+  // Récupération des éléments du formulaire
+  var quantity = req.body.quantity;
+  var input = req.body.checkYes;
+  var productsType;
+  if(input == 'true'){
+    productsType = 1;
+  }
+  else{
+    productsType = 0;
+  }
+  var sYear = req.body.year;
+  var sMonth = req.body.month;
+  var sDay = req.body.day;
+  var sHour = req.body.hour;
+  var sMinute = req.body.minute;
+  var consumer = req.body.consumer;
+  var delivery = req.body.delivery;
+
+  //Modification en DateTime pour la base de données
+  var sqlDate = jsDateToSql(sYear, sMonth, sDay, sHour, sMinute);
+
+  // Connexion à la base de données
+  var con = mysql.createConnection({
+    host: "localhost",
+    port: "3306",
+    user: "root",
+    password: "",
+    database: "database"
+  });
+
+  con.connect(function(err) {
+      if (err) throw err;
+      console.log("Connected!");
+  })
+
+  // Insertion dans la table delivery
+  var sql = "UPDATE delivery SET quantity = ? , productsType = ? , deliveryHour = ? , idConsumer = ? WHERE idDelivery = ?";
+  var values1 = [quantity];
+  var values2 = [productsType];
+  var values3 = [sqlDate];
+  var values4 = [consumer];
+  var values5 = [delivery];
+  con.query(sql, [values1, values2, values3, values4, values5], function (err, result) {
+    if (err) throw err;
+    console.log("1 record Modified");
+     
+    //fermeture de la connexion
+    con.end();
+  });
+    
+  return res.redirect('http://localhost:8080/edsa-Producers/ManageDelivery.html');
   
 });
