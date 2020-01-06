@@ -236,6 +236,71 @@ app.post('/addProducer/', function(req, res) {
   
 });
 
+
+//Add a producer to the database, but from authentification
+app.post('/addProducerAuth/', function(req, res) {
+  
+  res.setHeader('Content-Type', 'application/json');
+  console.log(req.body);
+  
+  // Récupération des éléments du formulaire
+  var firstname = req.body.firstname;
+  var surname = req.body.surname;
+	var email = req.body.email;
+  var phone = req.body.phone;
+  var address = req.body.address;
+  var comments = req.body.comments;
+    
+  // Connexion à la base de données
+  var con = mysql.createConnection({
+    host: "localhost",
+    port: "3306",
+    user: "root",
+    password: "",
+    database: "database"
+  });
+
+  con.connect(function(err) {
+      if (err) throw err;
+      console.log("Connected!");
+  })
+
+  // Insertion dans la base producer
+  var sql = "INSERT INTO producer (surname, firstname, email, phone) VALUES (?)";
+  var values = [surname, firstname, email, phone];
+  con.query(sql, [values], function (err, result) {
+    if (err) throw err;
+    console.log("1 record inserted");
+  
+    // Récupération de l'id du nouveau producer
+    var sql2 = "SELECT idProducer FROM producer WHERE surname = ? and firstname = ? and email = ? and phone = ?";
+    var values2 = [surname];
+    var values3 = [firstname];
+    var values4 = [email];
+    var values5 = [phone];
+    con.query(sql2, [values2, values3, values4, values5], function (err2, result2) {
+      console.log(err2);
+      console.log(result2[0].idProducer);
+
+      // insertion dans la base producerAddress
+      var sql3 = "INSERT INTO producerAddress (address, comments, idProducer) VALUES (?)";
+      var values6 = [address, comments, result2[0].idProducer];
+      con.query(sql3, [values6], function (err3, result3) {
+        console.log(err3);
+        console.log("1 record inserted");
+      
+        //fermeture de la connexion
+        con.end();
+      });
+    });
+  });
+  
+  return res.redirect('http://localhost:8080/edsa-Producers/Authentification.html');
+  
+});
+
+
+
 //Add a truck to the database
 app.post('/addTruck/', function(req, res) {
   
