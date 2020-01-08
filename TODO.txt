@@ -1,5 +1,5 @@
 TODO
-Ajouter l'affichage du planning (même si ça ne sera pas fonctionnel car on aura pas de ligne, (getTable, index ...))
+
 Calcul des distances si on a le temps Inchallah
 Vérifier que les changements dans la base de données fonctionnent
 J'ai ajouté la l'affichage de la table appointment donc il faut vérifier si ça fonctionne et il faudrait voir si on peut afficher 
