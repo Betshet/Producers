@@ -1,4 +1,11 @@
 TODO
 Ajouter l'affichage du planning (même si ça ne sera pas fonctionnel car on aura pas de ligne, (getTable, index ...))
 Calcul des distances si on a le temps Inchallah
-Modifier la BDD et donc tous les codes (je vais m'en occuper tkt)
+Vérifier que les changements dans la base de données fonctionnent
+J'ai ajouté la l'affichage de la table appointment donc il faut vérifier si ça fonctionne et il faudrait voir si on peut afficher 
+l'adresse de rendez-vous et non l'id de l'adresse (donc aller chercher dans la table address la valeur de address à partir de idAddress)
+Peut-être que pour ça on peut faire avec des jointures dans la requête sql
+Est-ce que tu peux me faire une capture d'écran de la page PlanningVisualisation s'il te plait et me l'envoyer (même s'il n'y a rien dedans)
+
+
+Les autres changement arrive plus tard, j'avance dans le rapport et je les trouve au fur et à mesure
