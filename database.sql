@@ -31,8 +31,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `appointment` (
   `idAppointment` int(11) NOT NULL,
   `hour` datetime NOT NULL,
-  `idPlanning` int(11) NOT NULL,
-  `idConsumerAddress` int(11) NOT NULL,
+  `idProducer` int(11) NOT NULL,
+  `idAddress` int(11) NOT NULL,
   `idVehicles` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -61,22 +61,24 @@ INSERT INTO `consumer` (`idConsumer`, `surname`, `firstname`, `email`, `phone`, 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `consumeraddress`
+-- Structure de la table `address`
 --
 
-CREATE TABLE `consumeraddress` (
-  `idConsumerAddress` int(11) NOT NULL,
+CREATE TABLE `address` (
+  `idAddress` int(11) NOT NULL,
   `address` varchar(50) NOT NULL,
   `comments` varchar(50) NOT NULL,
+  `idProducer` int(11) NOT NULL,
   `idConsumer` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `consumeraddress`
+-- Déchargement des données de la table `address`
 --
 
-INSERT INTO `consumeraddress` (`idConsumerAddress`, `address`, `comments`, `idConsumer`) VALUES
-(12, 'a', 'a', 28);
+INSERT INTO `address` (`idAddress`, `address`, `comments`, `idProducer`, `idConsumer`) VALUES
+(12, 'a', 'a', 0, 28),
+(13, 'a', 'a', 10, 0);
 
 -- --------------------------------------------------------
 
@@ -91,17 +93,6 @@ CREATE TABLE `delivery` (
   `deliveryHour` datetime NOT NULL,
   `idProducer` int(11) NOT NULL,
   `idConsumer` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `planning`
---
-
-CREATE TABLE `planning` (
-  `idPlanning` int(11) NOT NULL,
-  `idProducer` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -125,31 +116,6 @@ CREATE TABLE `producer` (
 INSERT INTO `producer` (`idProducer`, `surname`, `firstname`, `email`, `phone`) VALUES
 (42, 'geraldine', 'ger', 'ger@gmail.com', '0978967099'),
 (10, 'jacques', 'jacques', 'jacques@jacques.com', '0000001');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `produceraddress`
---
-
-CREATE TABLE `produceraddress` (
-  `idProducerAddress` int(11) NOT NULL,
-  `address` varchar(50) DEFAULT NULL,
-  `comments` varchar(50) NOT NULL,
-  `idProducer` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `produceraddress`
---
-
-INSERT INTO `produceraddress` (`idProducerAddress`, `address`, `comments`, `idProducer`) VALUES
-(37, 'a', 'a', 68),
-(36, 'a', 'a', 67),
-(35, 'a', 'a', 66),
-(34, 'a', 'a', 65),
-(33, 'a', 'a', 64),
-(38, 'a', 'a', 69);
 
 -- --------------------------------------------------------
 
@@ -180,8 +146,8 @@ INSERT INTO `vehicles` (`idVehicles`, `capacity`, `isRefregirated`, `idProducer`
 --
 ALTER TABLE `appointment`
   ADD PRIMARY KEY (`idAppointment`),
-  ADD KEY `idPlanning` (`idPlanning`),
-  ADD KEY `idConsumerAddress` (`idConsumerAddress`),
+  ADD KEY `idProducer` (`idProducer`),
+  ADD KEY `idAddress` (`idAddress`),
   ADD KEY `idVehicles` (`idVehicles`);
 
 --
@@ -192,11 +158,12 @@ ALTER TABLE `consumer`
   ADD KEY `idProducer` (`idProducer`);
 
 --
--- Index pour la table `consumeraddress`
+-- Index pour la table `address`
 --
-ALTER TABLE `consumeraddress`
-  ADD PRIMARY KEY (`idConsumerAddress`),
-  ADD KEY `fk_idconsumer` (`idConsumer`);
+ALTER TABLE `address`
+  ADD PRIMARY KEY (`idAddress`),
+  ADD KEY `idProducer` (`idProducer`),
+  ADD KEY `idConsumer` (`idConsumer`);
 
 --
 -- Index pour la table `delivery`
@@ -207,23 +174,10 @@ ALTER TABLE `delivery`
   ADD KEY `idConsumer` (`idConsumer`);
 
 --
--- Index pour la table `planning`
---
-ALTER TABLE `planning`
-  ADD PRIMARY KEY (`idPlanning`);
-
---
 -- Index pour la table `producer`
 --
 ALTER TABLE `producer`
   ADD PRIMARY KEY (`idProducer`);
-
---
--- Index pour la table `produceraddress`
---
-ALTER TABLE `produceraddress`
-  ADD PRIMARY KEY (`idProducerAddress`),
-  ADD KEY `idProducer` (`idProducer`);
 
 --
 -- Index pour la table `vehicles`
@@ -249,28 +203,18 @@ ALTER TABLE `consumer`
 --
 -- AUTO_INCREMENT pour la table `consumeraddress`
 --
-ALTER TABLE `consumeraddress`
-  MODIFY `idConsumerAddress` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+ALTER TABLE `address`
+  MODIFY `idAddress` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT pour la table `delivery`
 --
 ALTER TABLE `delivery`
   MODIFY `idDelivery` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT pour la table `planning`
---
-ALTER TABLE `planning`
-  MODIFY `idPlanning` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT pour la table `producer`
 --
 ALTER TABLE `producer`
   MODIFY `idProducer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
---
--- AUTO_INCREMENT pour la table `produceraddress`
---
-ALTER TABLE `produceraddress`
-  MODIFY `idProducerAddress` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT pour la table `vehicles`
 --

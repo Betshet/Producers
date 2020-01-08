@@ -59,7 +59,7 @@ function delRow(){
 	
 	$.ajax({
 		type: 'POST',
-		url: 'http://localhost:3000/deleteRow?p1=produceraddress&p2=idProducer&p3='+idProd,
+		url: 'http://localhost:3000/deleteRow?p1=address&p2=idProducer&p3='+idProd,
 		
 		success: function () { },
 		error: function (request, status, error) {

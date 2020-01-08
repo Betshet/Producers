@@ -36,11 +36,6 @@ var server = app.listen(3000, function () {
   console.log(server);
 });
 
-app.get( '/', function (req,res) {
-	console.log('hi');
-	return res;
-});
-
 //Get the requested table from database
 app.get( '/getTable', function (req,res) {
 	
@@ -157,9 +152,9 @@ app.post('/addClient/', function(req, res) {
       console.log(err2);
       console.log(result2[0].idConsumer);
 
-      // insertion dans la base consumerAddress
-      var sql3 = "INSERT INTO consumerAddress (address, comments, idConsumer) VALUES (?)";
-      var values7 = [address, comments, result2[0].idConsumer];
+      // insertion dans la base Address
+      var sql3 = "INSERT INTO address (address, comments, idProducer, idConsumer) VALUES (?)";
+      var values7 = [address, comments, 0,result2[0].idConsumer];
       con.query(sql3, [values7], function (err3, result3) {
         console.log(err3);
         console.log("1 record inserted");
@@ -220,8 +215,8 @@ app.post('/addProducer/', function(req, res) {
       console.log(result2[0].idProducer);
 
       // insertion dans la base producerAddress
-      var sql3 = "INSERT INTO producerAddress (address, comments, idProducer) VALUES (?)";
-      var values6 = [address, comments, result2[0].idProducer];
+      var sql3 = "INSERT INTO address (address, comments, idProducer, idConsumer) VALUES (?)";
+      var values6 = [address, comments, result2[0].idProducer, 0];
       con.query(sql3, [values6], function (err3, result3) {
         console.log(err3);
         console.log("1 record inserted");
@@ -283,8 +278,8 @@ app.post('/addProducerAuth/', function(req, res) {
       console.log(result2[0].idProducer);
 
       // insertion dans la base producerAddress
-      var sql3 = "INSERT INTO producerAddress (address, comments, idProducer) VALUES (?)";
-      var values6 = [address, comments, result2[0].idProducer];
+      var sql3 = "INSERT INTO address (address, comments, idProducer, idConsumer) VALUES (?)";
+      var values6 = [address, comments, result2[0].idProducer, 0];
       con.query(sql3, [values6], function (err3, result3) {
         console.log(err3);
         console.log("1 record inserted");
@@ -481,7 +476,7 @@ app.post('/editClient/', function(req, res) {
     console.log("1 record modified");
   
     // Modification de l'adresse du client
-    var sql2 = "UPDATE consumerAddress SET address = ? , comments = ? WHERE idConsumer = ?";
+    var sql2 = "UPDATE address SET address = ? , comments = ? WHERE idConsumer = ?";
     var values6 = [address];
     var values7 = [comments];
     var values8 = [client];
@@ -540,7 +535,7 @@ app.post('/editProducer/', function(req, res) {
     console.log("1 record modified");
   
     // Modification de l'adresse du producteur
-    var sql2 = "UPDATE producerAddress SET address = ? , comments = ? WHERE idProducer = ?";
+    var sql2 = "UPDATE address SET address = ? , comments = ? WHERE idProducer = ?";
     var values6 = [address];
     var values7 = [comments];
     var values8 = [producer];
