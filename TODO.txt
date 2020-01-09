@@ -20,9 +20,6 @@ lors de la modification d'un producteur si l'adresse mail est déjà prise ("l'adr
 Pour le rapport :
 Est-ce que tu peux me faire une capture d'écran de la page PlanningVisualisation s'il te plait et me l'envoyer (même s'il n'y a rien dedans)
 tu peux refaire les captures d'écran que je t'avais demandé pour qu'on voit tout l'écran (les 4 visualisations des tableaux)
-faire un petit paragraphe sur HTML, puis CSS, puis Javascript, puis SQL, puis NodeJS, puis MySQL. 
-faire un petit paragraphe sur l'architecture de l'application (entre les différents serveurs, faire un schéma pour que ce soit compréhensible)
-faire un petit paragraphe sur l'intégration avec les autres projets
 
 Pour les tests :
 regarder si MOCHA (test sur javascript nodeJS, je savais bien qu'il y en avait) ça se met en place rapidement pour faire des tests ou si c'est mort
