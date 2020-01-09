@@ -15,7 +15,7 @@ ajouter la gestion d'erreur si l'utilisateur n'est pas dans la base ("utilisateu
 lors de l'ajout d'un producteur/client/camion/livraions si un des champs n'est pas rempli ("Un des champs n'est pas renseigné")
 lors de l'ajout d'un producteur si l'adresse mail est déjà prise ("l'adresse mail est déjà utilisé")
 lors de la modification d'un producteur/client/camion/livraisons si un des champs n'est pas rempli ("Un des champs n'est pas renseigné")
-lors de la modification d'un producteur si l'adresse mail est déjà prise ("l'adresse mail est déjà utilisé")
+lors de la modification d'un producteur si l'adresse mail est déjà prise ("l'adresse mail est déjà utilisée")
 
 Pour le rapport :
 Est-ce que tu peux me faire une capture d'écran de la page PlanningVisualisation s'il te plait et me l'envoyer (même s'il n'y a rien dedans)
