@@ -1,11 +1,32 @@
 TODO
 
+Pour le code : 
 Calcul des distances si on a le temps Inchallah
 Vérifier que les changements dans la base de données fonctionnent
 J'ai ajouté la l'affichage de la table appointment donc il faut vérifier si ça fonctionne et il faudrait voir si on peut afficher 
 l'adresse de rendez-vous et non l'id de l'adresse (donc aller chercher dans la table address la valeur de address à partir de idAddress)
 Peut-être que pour ça on peut faire avec des jointures dans la requête sql
+petite question, est-ce qu'un admin peut ajouter un client/truck/delivery, si oui, a quel producteur est attribué ce qui est créé
+
+Pour la gestion des erreurs : (ce qu'il y a entre guillemets c'est ce qui doit aller dans le pop-up d'erreur)
+ajouter la gestion d'erreur lors de l'inscription si un des champs est vide ("Un des champs n'est pas renseigné")
+ajouter la gestion d'erreur lors de la connexion si le champ est vide ("le champ n'est pas rempli")
+ajouter la gestion d'erreur si l'utilisateur n'est pas dans la base ("utilisateur inconnu")
+lors de l'ajout d'un producteur/client/camion/livraions si un des champs n'est pas rempli ("Un des champs n'est pas renseigné")
+lors de l'ajout d'un producteur si l'adresse mail est déjà prise ("l'adresse mail est déjà utilisé")
+lors de la modification d'un producteur/client/camion/livraisons si un des champs n'est pas rempli ("Un des champs n'est pas renseigné")
+lors de la modification d'un producteur si l'adresse mail est déjà prise ("l'adresse mail est déjà utilisé")
+
+Pour le rapport :
 Est-ce que tu peux me faire une capture d'écran de la page PlanningVisualisation s'il te plait et me l'envoyer (même s'il n'y a rien dedans)
+tu peux refaire les captures d'écran que je t'avais demandé pour qu'on voit tout l'écran (les 4 visualisations des tableaux)
+faire un petit paragraphe sur HTML, puis CSS, puis Javascript, puis SQL, puis NodeJS, puis MySQL. 
+faire un petit paragraphe sur l'architecture de l'application (entre les différents serveurs, faire un schéma pour que ce soit compréhensible)
+faire un petit paragraphe sur l'intégration avec les autres projets
 
+Pour les tests :
+regarder si MOCHA (test sur javascript nodeJS, je savais bien qu'il y en avait) ça se met en place rapidement pour faire des tests ou si c'est mort
 
-Les autres changement arrive plus tard, j'avance dans le rapport et je les trouve au fur et à mesure
+Autre :
+Préparer le manuel de mise en place de l'application (dans le readme par exemple)
+Préparer un manuel d'utilisation de l'application même si je pense que le rapport suffit donc à voir
