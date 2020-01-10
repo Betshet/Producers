@@ -6,6 +6,8 @@ $(document).ready( function () {
 	console.log(user);
 	if(user.localeCompare('admin')==0){
 		var urlString = 'http://localhost:3000/getTable?p1=vehicles';
+		document.getElementById('buttonAdd').type = 'hidden';
+		document.getElementById('buttonEdit').type = 'hidden'
 	}
 	else{ var urlString = 'http://localhost:3000/getRows?p1=vehicles&p2=idProducer&p3='+user; }
 	
