@@ -6,6 +6,8 @@ var events = require('events');
 var mysql = require('mysql');
 var path    = require("path");
 
+
+
 app.use(express.static(__dirname + '/public'));
 app.use(express.static('Data'));
 
@@ -30,7 +32,7 @@ var types = [
   }
 ];
 
-
+var redirect = process.argv[2];
 var server = app.listen(3000, function () {
   console.log('Web server listing at http://localhost:%s', server.address().port);
   console.log(server);
@@ -165,7 +167,7 @@ app.post('/addClient/', function(req, res) {
     });
   });
   
-  return res.redirect('http://localhost:8080/edsa-Producers/ManageClients.html');
+  return res.redirect(redirect+'ManageClients.html');
   
 });
 
@@ -227,7 +229,7 @@ app.post('/addProducer/', function(req, res) {
     });
   });
   
-  return res.redirect('http://localhost:8080/edsa-Producers/ManageProducers.html');
+  return res.redirect(redirect+'ManageProducers.html');
   
 });
 
@@ -290,11 +292,9 @@ app.post('/addProducerAuth/', function(req, res) {
     });
   });
   
-  return res.redirect('http://localhost:8080/edsa-Producers/Authentification.html');
+  return res.redirect(redirect+'Authentification.html');
   
 });
-
-
 
 //Add a truck to the database
 app.post('/addTruck/', function(req, res) {
@@ -312,7 +312,7 @@ app.post('/addTruck/', function(req, res) {
   else{
     isRefregirated = 0;
   }
-  var producer = req.body.IdProducer;
+  var producer = req.body.producer;
     
   // Connexion à la base de données
   var con = mysql.createConnection({
@@ -339,7 +339,7 @@ app.post('/addTruck/', function(req, res) {
     con.end();
   });
     
-  return res.redirect('http://localhost:8080/edsa-Producers/TruckList.html');
+  return res.redirect(redirect+'TruckList.html');
   
 });
 
@@ -402,7 +402,7 @@ app.post('/addDelivery/', function(req, res) {
     con.end();
   });
     
-  return res.redirect('http://localhost:8080/edsa-Producers/ManageDelivery.html');
+  return res.redirect(redirect+'ManageDelivery.html');
   
 });
 
@@ -490,7 +490,7 @@ app.post('/editClient/', function(req, res) {
     });
   });
   
-  return res.redirect('http://localhost:8080/edsa-Producers/ManageClients.html');
+  return res.redirect(redirect+'ManageClients.html');
   
 });
 
@@ -549,7 +549,7 @@ app.post('/editProducer/', function(req, res) {
     });
   });
   
-  return res.redirect('http://localhost:8080/edsa-Producers/ManageProducers.html');
+  return res.redirect(redirect+'ManageProducers.html');
   
 });
 
@@ -598,7 +598,7 @@ app.post('/editTruck/', function(req, res) {
     con.end();
   });
     
-  return res.redirect('http://localhost:8080/edsa-Producers/TruckList.html');
+  return res.redirect(redirect+'TruckList.html');
   
 });
 
@@ -658,6 +658,6 @@ app.post('/editDelivery/', function(req, res) {
     con.end();
   });
     
-  return res.redirect('http://localhost:8080/edsa-Producers/ManageDelivery.html');
+  return res.redirect(redirect+'ManageDelivery.html');
   
 });
