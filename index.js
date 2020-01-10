@@ -23,13 +23,6 @@ app.use(function(req, res, next) {
   next();
 });
 
-var con = mysql.createConnection({
-        host: "localhost",
-		port: process.argv[3],
-        user: "root",
-        password: "",
-        database: "database"
-    });
 
 var types = [
   {
@@ -40,6 +33,7 @@ var types = [
 ];
 
 var redirect = process.argv[2];
+var dbport = process.argv[3];
 var server = app.listen(3000, function () {
   console.log('Web server listing at http://localhost:%s', server.address().port);
   console.log(server);
@@ -47,7 +41,15 @@ var server = app.listen(3000, function () {
 
 //Get the requested table from database
 app.get( '/getTable', function (req,res) {
-
+	
+	var con = mysql.createConnection({
+        host: "localhost",
+		port:dbport,
+        user: "root",
+        password: "",
+        database: "database"
+    });
+	
 	con.connect(function(err) {
         if (err) throw err;
         console.log("Connected!");
@@ -74,7 +76,14 @@ app.get( '/getTable', function (req,res) {
 
 //Get the requested rows from the requested table with the given value
 app.get( '/getRows', function (req,res) {
-
+	
+	var con = mysql.createConnection({
+        host: "localhost",
+		port:dbport,
+        user: "root",
+        password: "",
+        database: "database"
+    });
 	
 	con.connect(function(err) {
         if (err) throw err;
@@ -115,6 +124,13 @@ app.post('/addClient/', function(req, res) {
   var producer = req.body.producer;
     
   // Connexion à la base de données
+  var con = mysql.createConnection({
+    host: "localhost",
+    port: dbport,
+    user: "root",
+    password: "",
+    database: "database"
+  });
 
   con.connect(function(err) {
       if (err) throw err;
@@ -171,6 +187,14 @@ app.post('/addProducer/', function(req, res) {
   var comments = req.body.comments;
     
   // Connexion à la base de données
+  var con = mysql.createConnection({
+    host: "localhost",
+    port: dbport,
+    user: "root",
+    password: "",
+    database: "database"
+  });
+
   con.connect(function(err) {
       if (err) throw err;
       console.log("Connected!");
@@ -226,6 +250,14 @@ app.post('/addProducerAuth/', function(req, res) {
   var comments = req.body.comments;
     
   // Connexion à la base de données
+  var con = mysql.createConnection({
+    host: "localhost",
+    port: dbport,
+    user: "root",
+    password: "",
+    database: "database"
+  });
+
   con.connect(function(err) {
       if (err) throw err;
       console.log("Connected!");
@@ -284,6 +316,14 @@ app.post('/addTruck/', function(req, res) {
   var producer = req.body.producer;
     
   // Connexion à la base de données
+  var con = mysql.createConnection({
+    host: "localhost",
+    port: dbport,
+    user: "root",
+    password: "",
+    database: "database"
+  });
+
   con.connect(function(err) {
       if (err) throw err;
       console.log("Connected!");
@@ -339,6 +379,14 @@ app.post('/addDelivery/', function(req, res) {
   var sqlDate = jsDateToSql(sYear, sMonth, sDay, sHour, sMinute);
 
   // Connexion à la base de données
+  var con = mysql.createConnection({
+    host: "localhost",
+    port: dbport,
+    user: "root",
+    password: "",
+    database: "database"
+  });
+
   con.connect(function(err) {
       if (err) throw err;
       console.log("Connected!");
@@ -364,6 +412,14 @@ app.post( '/deleteRow/', function (req,res) {
 
 
   // Connexion à la base de données
+  var con = mysql.createConnection({
+    host: "localhost",
+    port: dbport,
+    user: "root",
+    password: "",
+    database: "database"
+  });
+
   con.connect(function(err) {
       if (err) throw err;
       console.log("Connected!");
@@ -396,6 +452,13 @@ app.post('/editClient/', function(req, res) {
   var client = req.body.client;
     
   // Connexion à la base de données
+  var con = mysql.createConnection({
+    host: "localhost",
+    port:dbport,
+    user: "root",
+    password: "",
+    database: "database"
+  });
 
   con.connect(function(err) {
       if (err) throw err;
@@ -448,6 +511,13 @@ app.post('/editProducer/', function(req, res) {
   var producer = req.body.producer;
     
   // Connexion à la base de données
+  var con = mysql.createConnection({
+    host: "localhost",
+    port: dbport,
+    user: "root",
+    password: "",
+    database: "database"
+  });
 
   con.connect(function(err) {
       if (err) throw err;
@@ -503,6 +573,14 @@ app.post('/editTruck/', function(req, res) {
   var truck = req.body.truck;
     
   // Connexion à la base de données
+  var con = mysql.createConnection({
+    host: "localhost",
+    port: dbport,
+    user: "root",
+    password: "",
+    database: "database"
+  });
+
   con.connect(function(err) {
       if (err) throw err;
       console.log("Connected!");
@@ -553,6 +631,13 @@ app.post('/editDelivery/', function(req, res) {
   var sqlDate = jsDateToSql(sYear, sMonth, sDay, sHour, sMinute);
 
   // Connexion à la base de données
+  var con = mysql.createConnection({
+    host: "localhost",
+    port: dbport,
+    user: "root",
+    password: "",
+    database: "database"
+  });
 
   con.connect(function(err) {
       if (err) throw err;
